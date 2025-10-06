@@ -4,6 +4,8 @@
 
 class CVector {
 public:
+	CVector operator-(const CVector& v)const;
+	CVector operator+(const CVector& v)const;
 	CVector();
 	CVector(float x, float y, float z);
 	void Set(float x, float y, float z);
