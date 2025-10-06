@@ -4,7 +4,8 @@
 
 class CVector {
 public:
-	
+	CVector();
+	CVector(float x, float y, float z);
 	void Set(float x, float y, float z);
 	float X() const;
 	float Y() const;

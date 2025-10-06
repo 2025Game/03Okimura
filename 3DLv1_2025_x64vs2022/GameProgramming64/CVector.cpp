@@ -1,4 +1,25 @@
 #include "CVector.h"
+
+
+
+
+CVector::CVector()
+:mX(0)
+,mY(0)
+, mZ(0)
+{
+}
+
+
+CVector::CVector(float x, float y, float z)
+	:mX(x)
+	, mY(y)
+	, mZ(z)
+{
+}
+
+
+
 void CVector::Set(float x, float y, float z)
 {
 	mX = x;
