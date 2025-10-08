@@ -7,6 +7,7 @@
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
+#define MODEL_OBJ "res\\obj.obj","res\\obj.mtl"
 
 CCharacterManager CApplication::mCharacterManager;
 CTexture CApplication::mTexture;
@@ -24,6 +25,7 @@ CCharacterManager* CApplication::CharacterManager()
 void CApplication::Start()
 {
 	mEye = CVector(1.0f, 2.0f, 3.0f);
+	mModel.Load(MODEL_OBJ);
 }
 
 void CApplication::Update()
