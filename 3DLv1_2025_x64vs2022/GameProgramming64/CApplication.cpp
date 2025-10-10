@@ -31,6 +31,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+	mModel.Render();
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
 	v0.Set(0.0f, 0.0f, 0.5f);
@@ -86,17 +87,6 @@ void CApplication::Update()
 	glVertex3f(v2.X(), v2.Y(), v2.Z());
 
 	glEnd();
-	CTriangle t0;
-	t0.Vertex(CVector(1.0f, 0.0f, 0.5f), CVector(2.0f, 0.0f, 0.0f), CVector(1.0f, 0.0f, -0.5f));
-	t0.Normal(CVector(0.0f, 1.0f, 0.0f));
-	t0.Render();
-	CTriangle t1;
-	t1.Vertex(CVector(0.5f, 1.0f, 0.0f), CVector(0.0f, 2.0f, 0.0f), CVector(-0.5f, 1.0f, 0.0f));
-	t1.Normal(CVector(1.0f, 0.0f, 0.0f));
-	t1.Render();
-	CTriangle t2;
-	t2.Vertex(CVector(0.0f, 0.5f, 1.0f), CVector(0.0f, 0.0f, 2.0f), CVector(0.0f, -0.5f, 1.0f));
-	t2.Normal(CVector(0.0f, 0.0f, 1.0f));
-	t2.Render();
+	
 }
 
