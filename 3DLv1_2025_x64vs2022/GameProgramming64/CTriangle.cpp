@@ -1,6 +1,16 @@
 #include "CTriangle.h"
 #include "glut.h"
 
+int CTriangle::MaterialIdx()
+{
+	return mMaterialIdx;
+}
+
+void CTriangle::MaterialIdx(int idx)
+{
+	mMaterialIdx = idx;
+}
+
 void CTriangle::Vertex(const CVector& v0, const CVector& v1, const CVector& v2) {
 	mV[0] = v0;
 	mV[1] = v1;

@@ -5,11 +5,14 @@
 #include "CVector.h"
 class CTriangle {
 public:
+	int MaterialIdx();
+	void MaterialIdx(int idx);
 	void Vertex(const CVector& v0, const CVector& v1, const CVector& v2);
 	void Normal(const CVector &n);
 	void Render();
 	void Normal(const CVector& v0, const CVector& v1, const CVector& v2);
 private:
+	int mMaterialIdx;
 	CVector mV[3];
 	CVector mN[3];
 };
