@@ -4,6 +4,7 @@
 #include "glut.h"
 #include "CVector.h"
 #include "CTriangle.h"
+#include "CMatrix.h"
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
@@ -28,6 +29,8 @@ void CApplication::Start()
 	mEye = CVector(15.0f, 5.0f, 20.0f);
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
+	CMatrix matrix;
+	matrix.Print();
 }
 
 void CApplication::Update()
