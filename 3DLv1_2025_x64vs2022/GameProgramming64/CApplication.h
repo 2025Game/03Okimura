@@ -29,6 +29,7 @@ public:
 	//ŒJ‚è•Ô‚µÀs‚·‚éƒvƒƒOƒ‰ƒ€
 	void Update();
 private:
+	CModel mBackGround;
 	CModel mModel;
 	CVector mEye;
 	CSound mSoundBgm;

@@ -21,6 +21,13 @@ CMaterial::CMaterial() {
 }
 void CMaterial::Enabled() {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mDiffuse);
+	if (mTexture.Id())
+	{
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, mTexture.Id());
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	}
 }
 char* CMaterial::Name()
 {
@@ -33,4 +40,16 @@ void CMaterial::Name(char* name)
 float* CMaterial::Diffuse()
 {
 	return mDiffuse;
+}
+void CMaterial::Disabled() {
+	if (mTexture.Id())
+	{
+		glDisable(GL_BLEND);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glDisable(GL_TEXTURE_2D);
+	}
+}
+CTexture* CMaterial::Texture()
+{
+	return &mTexture;
 }

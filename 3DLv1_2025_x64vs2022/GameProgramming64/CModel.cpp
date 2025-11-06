@@ -16,11 +16,13 @@ void CModel::Render() {
 	for (int i = 0; i < mTriangles.size(); i++) {
 		mpMaterials[mTriangles[i].MaterialIdx()]->Enabled();
 		mTriangles[i].Render();
+		mpMaterials[mTriangles[i].MaterialIdx()]->Disabled();
 	}
 }
 void CModel::Load(const char* obj, const char* mtl) {
 	std::vector<CVector> vertex;
 	std::vector<CVector> normal;
+	std::vector<CVector> uv;
 	FILE* fp;
 	char buf[256];
 	fp = fopen(mtl, "r");
@@ -43,9 +45,13 @@ void CModel::Load(const char* obj, const char* mtl) {
 			mpMaterials[idx]->Diffuse()[1] = atof(str[2]);
 			mpMaterials[idx]->Diffuse()[2] = atof(str[3]);
 		}
+		else if (strcmp(str[0], "map_Kd") == 0) {
+			mpMaterials[idx]->Texture()->Load(str[1]);
+		}
 		else if (strcmp(str[0], "d") == 0) {
 			mpMaterials[idx]->Diffuse()[3] = atof(str[1]);
 		}
+
 	}
 	fclose(fp);
 
@@ -62,14 +68,28 @@ void CModel::Load(const char* obj, const char* mtl) {
 		}
 		else if (strcmp(str[0], "f") == 0) {
 			int v[3], n[3];
-			sscanf(str[1], "%d//%d", &v[0], &n[0]);
-			sscanf(str[2], "%d//%d", &v[1], &n[1]);
-			sscanf(str[3], "%d//%d", &v[2], &n[2]);
-			CTriangle t;
-			t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
-			t.Normal(normal[n[0] - 1], normal[n[1] - 1], normal[n[2] - 1]);
-			t.MaterialIdx(idx);
-			mTriangles.push_back(t);
+			if (strstr(str[1], "//")) {
+				sscanf(str[1], "%d//%d", &v[0], &n[0]);
+				sscanf(str[2], "%d//%d", &v[1], &n[1]);
+				sscanf(str[3], "%d//%d", &v[2], &n[2]);
+				CTriangle t;
+				t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
+				t.Normal(normal[n[0] - 1], normal[n[1] - 1], normal[n[2] - 1]);
+				t.MaterialIdx(idx);
+				mTriangles.push_back(t);
+			}
+			else {
+				int u[3];
+				sscanf(str[1], "%d/%d/%d", &v[0], &u[0], &n[0]);
+				sscanf(str[2], "%d/%d/%d", &v[1], &u[1], &n[1]);
+				sscanf(str[3], "%d/%d/%d", &v[2], &u[2], &n[2]);
+				CTriangle t;
+				t.Vertex(vertex[v[0] - 1], vertex[v[1] - 1], vertex[v[2] - 1]);
+				t.Normal(normal[n[0] - 1], normal[n[1] - 1], normal[n[2] - 1]);
+				t.UV(uv[u[0] - 1], uv[u[1] - 1], uv[u[2] - 1]);
+				t.MaterialIdx(idx);
+				mTriangles.push_back(t);
+			}
 		}
 		else if (strcmp(str[0], "usemtl") == 0) {
 			for (idx = mpMaterials.size() - 1; idx > 0; idx--) {
@@ -78,8 +98,11 @@ void CModel::Load(const char* obj, const char* mtl) {
 				}
 			}
 		}
-		if (strcmp(str[0], "vn") == 0) {
+		else if (strcmp(str[0], "vn") == 0) {
 			normal.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
+		}
+		else if (strcmp(str[0], "vt") == 0) {
+			uv.push_back(CVector(atof(str[1]), atof(str[2]), 0.0));
 		}
 	}
 	fclose(fp);
