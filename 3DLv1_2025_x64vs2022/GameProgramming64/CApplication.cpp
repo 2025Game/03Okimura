@@ -26,7 +26,7 @@ CCharacterManager* CApplication::CharacterManager()
 
 void CApplication::Start()
 {
-	mEye = CVector(0.0f, 2.0f, 20.0f);
+	mEye = CVector(1.0f, 2.0f, 3.0f);
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
@@ -71,7 +71,7 @@ void CApplication::Update()
 
 	
 
-	mModel.Render(CMatrix().RotateX(90.0f));
+	mModel.Render(CMatrix().Translate(-2.0f,0.0f,-15.0f));
 
 	
 	mBackGround.Render();

@@ -4,6 +4,8 @@
 
 class CMatrix {
 public:
+	void M(int row, int col, float value);
+	CMatrix Translate(float mx, float my, float mz);
 	CMatrix RotateX(float degree);
 	CMatrix RotateZ(float degree);
 	CMatrix RotateY(float degree);
