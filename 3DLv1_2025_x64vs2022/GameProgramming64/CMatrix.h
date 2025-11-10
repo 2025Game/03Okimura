@@ -4,6 +4,9 @@
 
 class CMatrix {
 public:
+	CMatrix RotateX(float degree);
+	CMatrix RotateZ(float degree);
+	CMatrix RotateY(float degree);
 	void Print();
 	CMatrix();
 	CMatrix Identity();
