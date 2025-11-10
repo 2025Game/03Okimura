@@ -1,9 +1,11 @@
 #pragma once
 #ifndef CVECTOR_H
 #define CVECTOR_H
+#include "CMatrix.h"
 
 class CVector {
 public:
+	CVector operator*(const CMatrix& m)const;
 	CVector operator-(const CVector& v)const;
 	CVector operator+(const CVector& v)const;
 	CVector();

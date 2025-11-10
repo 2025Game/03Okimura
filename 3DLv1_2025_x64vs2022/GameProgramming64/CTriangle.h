@@ -5,6 +5,7 @@
 #include "CVector.h"
 class CTriangle {
 public:
+	void Render(const CMatrix& m);
 	void UV(const CVector& v0, const CVector& v1, const CVector& v2);
 	int MaterialIdx();
 	void MaterialIdx(int idx);

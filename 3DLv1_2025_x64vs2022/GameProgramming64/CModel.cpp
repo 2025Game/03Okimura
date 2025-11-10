@@ -12,6 +12,14 @@ int strcmp(const char* s1, const char* s2)
 	return s1[i] - s2[i];
 }
 
+void CModel::Render(const CMatrix& m)
+{
+	for (int i = 0; i < mTriangles.size(); i++) {
+		mpMaterials[mTriangles[i].MaterialIdx()]->Enabled();
+		mTriangles[i].Render(m);
+		mpMaterials[mTriangles[i].MaterialIdx()]->Disabled();
+	}
+}
 void CModel::Render() {
 	for (int i = 0; i < mTriangles.size(); i++) {
 		mpMaterials[mTriangles[i].MaterialIdx()]->Enabled();

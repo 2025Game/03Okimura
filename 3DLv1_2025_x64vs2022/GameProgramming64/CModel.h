@@ -7,6 +7,7 @@
 
 class CModel {
 public:
+	void Render(const CMatrix& m);
 	~CModel();
 	void Load(const char* obj, const char* mtl);
 	void Render();

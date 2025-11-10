@@ -26,7 +26,7 @@ CCharacterManager* CApplication::CharacterManager()
 
 void CApplication::Start()
 {
-	mEye = CVector(15.0f, 5.0f, 20.0f);
+	mEye = CVector(1.0f, 2.0f, 3.0f);
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
@@ -36,7 +36,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	mModel.Render();
+	
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
 	v0.Set(0.0f, 0.0f, 0.5f);
@@ -69,29 +69,11 @@ void CApplication::Update()
 
 
 
-	glBegin(GL_TRIANGLES);
-	glNormal3f(n.X(), n.Y(), n.Z());
-	glVertex3f(v0.X(), v0.Y(), v0.Z());
-	glVertex3f(v1.X(), v1.Y(), v1.Z());
-	glVertex3f(v2.X(), v2.Y(), v2.Z());
-	n.Set(0.0f, 0.0f, 1.0f);
-	v0.Set(0.5f, 0.0f, 0.0f);
-	v1.Set(0.0f, 1.0f, 0.0f);
-	v2.Set(-0.5f, 0.0f, 0.0f);
-	glNormal3f(n.X(), n.Y(), n.Z());
-	glVertex3f(v0.X(), v0.Y(), v0.Z());
-	glVertex3f(v1.X(), v1.Y(), v1.Z());
-	glVertex3f(v2.X(), v2.Y(), v2.Z());
-	n.Set(1.0f, 0.0f, 0.0f);
-	v0.Set(0.0f, 0.5f, 0.0f);
-	v1.Set(0.0f, 0.0f, 1.0f);
-	v2.Set(0.0f, -0.5f, 0.0f);
-	glNormal3f(n.X(), n.Y(), n.Z());
-	glVertex3f(v0.X(), v0.Y(), v0.Z());
-	glVertex3f(v1.X(), v1.Y(), v1.Z());
-	glVertex3f(v2.X(), v2.Y(), v2.Z());
+	
 
-	glEnd();
+	mModel.Render(CMatrix().Scale(0.1f, 0.1f, 0.1f));
+
+	
 	mBackGround.Render();
 }
 
