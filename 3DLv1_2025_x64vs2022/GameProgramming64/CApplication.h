@@ -46,5 +46,5 @@ private:
 	CBullet* mpBullet;
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
-	CPlayer mPlayer;
+	CCharacter3 mPlayer;
 };
