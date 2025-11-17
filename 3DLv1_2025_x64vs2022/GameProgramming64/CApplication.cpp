@@ -5,6 +5,7 @@
 #include "CVector.h"
 #include "CTriangle.h"
 #include "CMatrix.h"
+#include "CTransform.h"
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
@@ -31,12 +32,24 @@ void CApplication::Start()
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
 	matrix.Print();
+	mCharacter.Model(&mModel);
+	mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Model(&mModel);
+	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
+	mPlayer.Rotation(CVector(0.0f, 180.0f, 0.0f));
+
 }
 
 void CApplication::Update()
 {
 	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	
+	mCharacter.Update();
+	mCharacter.Render();
+	mPlayer.Update();
+	mPlayer.Render();
+
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
 	v0.Set(0.0f, 0.0f, 0.5f);
@@ -70,12 +83,17 @@ void CApplication::Update()
 
 
 	
-	CMatrix matrix, position, rotation, scale;
+	/*CMatrix matrix, position, rotation, scale;
 	position.Translate(0.5f, 1.8f, 0.5f);
 	rotation.RotateY(180.0f);
 	scale.Scale(0.1f, 0.1f, 0.1f);
-	matrix = scale * rotation * position;
-	mModel.Render(matrix);
+	matrix = scale * rotation * position;*/
+	/*CTransform trans;
+	trans.Position(CVector(0.5f, 1.8f, 0.5f));
+	trans.Rotation(CVector(-10.0f, -20.0f, -30.0f));
+	trans.Scale(CVector(0.1f, 0.1f, 0.1f));
+	trans.Update();
+	mModel.Render(trans.Matrix());*/
 
 	
 	

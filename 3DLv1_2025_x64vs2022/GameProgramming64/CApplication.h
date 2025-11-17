@@ -10,6 +10,7 @@
 #include "CGame.h"
 #include "CVector.h"
 #include "CModel.h"
+#include "CCharacter3.h"
 
 class CApplication
 {
@@ -34,7 +35,7 @@ private:
 	CVector mEye;
 	CSound mSoundBgm;
 	CSound mSoundOver;
-
+	CCharacter3 mCharacter;
 	CGame* mpGame;
 	static CCharacterManager mCharacterManager;
 	EState mState;
@@ -45,4 +46,5 @@ private:
 	CBullet* mpBullet;
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
+	CCharacter3 mPlayer;
 };
