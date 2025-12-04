@@ -20,4 +20,5 @@ public:
 private:
 	CInput mInput;
 
+
 };*/
