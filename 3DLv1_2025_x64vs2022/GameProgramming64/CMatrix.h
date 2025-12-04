@@ -4,6 +4,7 @@
 
 class CMatrix {
 public:
+	float* M()const;
 	const CMatrix operator*(const CMatrix& m)const;
 	void M(int row, int col, float value);
 	CMatrix Translate(float mx, float my, float mz);

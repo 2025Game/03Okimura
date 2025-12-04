@@ -120,3 +120,7 @@ float CMatrix::M(int r, int c) const
 {
 	return mM[r][c];
 }
+float* CMatrix::M()const
+{
+	return(float*)mM[0];
+}

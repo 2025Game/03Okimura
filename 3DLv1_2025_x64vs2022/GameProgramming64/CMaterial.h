@@ -6,6 +6,8 @@
 
 class CMaterial {
 public:
+	void VertexNum(int num);
+	int VertexNum();
 	CTexture* Texture();
 	void Disabled();
 	CMaterial();
@@ -14,6 +16,7 @@ public:
 	void Name(char* name);
 	float* Diffuse();
 private:
+	int mVertexNum;
 	CTexture mTexture;
 	char mName[MATERIAL_NAME_LEN + 1];
 	float mDiffuse[4];

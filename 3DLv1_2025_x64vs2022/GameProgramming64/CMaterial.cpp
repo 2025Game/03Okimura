@@ -15,7 +15,9 @@ char* strncpy(char* str1, const char* str2, int len)
 	return str1;
 }
 
-CMaterial::CMaterial() {
+CMaterial::CMaterial() 
+	:mVertexNum(0)
+{
 	memset(mName, 0, sizeof(mName));
 	memset(mDiffuse, 0, sizeof(mDiffuse));
 }
@@ -48,6 +50,14 @@ void CMaterial::Disabled() {
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glDisable(GL_TEXTURE_2D);
 	}
+}
+void CMaterial::VertexNum(int num)
+{
+	mVertexNum = num;
+}
+int CMaterial::VertexNum()
+{
+	return mVertexNum;
 }
 CTexture* CMaterial::Texture()
 {
