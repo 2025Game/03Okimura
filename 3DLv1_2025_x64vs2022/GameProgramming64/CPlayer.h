@@ -4,8 +4,10 @@
 #include "CCharacter3.h"
 #include "CCharacter.h"
 #include "CInput.h"
+#include "CBullet.h"
 class CPlayer :public CCharacter3 {
 public:
+	CBullet bullet;
 	CPlayer(){}
 	CPlayer(const CVector& pos, const CVector& rot, const CVector& scale);
 	void Update();
