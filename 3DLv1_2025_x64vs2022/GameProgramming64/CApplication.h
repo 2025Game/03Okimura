@@ -35,7 +35,7 @@ private:
 	CVector mEye;
 	CSound mSoundBgm;
 	CSound mSoundOver;
-	CCharacter3 mCharacter;
+	/*CCharacter3 mCharacter;*/
 	CGame* mpGame;
 	static CCharacterManager mCharacterManager;
 	EState mState;

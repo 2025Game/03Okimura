@@ -32,8 +32,7 @@ void CApplication::Start()
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
 	matrix.Print();
-	mCharacter.Model(&mModel);
-	mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
+	
 	mPlayer.Model(&mModel);
 	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
@@ -43,11 +42,12 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	
-	mCharacter.Update();
-	mCharacter.Render();
 	mPlayer.Update();
+	CVector e, c, u;
+	e = mPlayer.Position() + CVector(0, 1, -3) * mPlayer.MatrixRotate();
+	c = mPlayer.Position();
+	u = CVector(0, 1, 0) * mPlayer.MatrixRotate();
+		gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
 	mPlayer.Render();
 
 	CVector v0, v1, v2, n;

@@ -2,6 +2,7 @@
 #include "CApplication.h"
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f)
 #define VELOCITY CVector(0.0f,0.0f,0.1f)
+#define ROTATION_XV CVector(1.0f,0.0f,0.0f)
 
 CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 {
@@ -16,6 +17,12 @@ void CPlayer::Update() {
 	}
 	if (mInput.Key('A')) {
 		mRotation = mRotation + ROTATION_YV;
+	}
+	if (mInput.Key('S')) {
+		mRotation = mRotation - ROTATION_XV;
+	}
+	if (mInput.Key('W')) {
+		mRotation = mRotation + ROTATION_XV;
 	}
 	CTransform::Update();
 }
