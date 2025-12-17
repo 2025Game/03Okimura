@@ -7,6 +7,7 @@
 #include "CMatrix.h"
 #include "CTransform.h"
 
+
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
@@ -98,7 +99,15 @@ void CApplication::Update()
 	
 	
 	mBackGround.Render();
-	mPlayer.bullet.Update();
-	mPlayer.bullet.Render();
+	/*mPlayer.bullet.Update();
+	mPlayer.bullet.Render();*/
+	mTaskManager.Update();
+	mTaskManager.Render();
 }
 
+CTaskManager CApplication::mTaskManager;
+CTaskManager* CApplication::TaskManager()
+{
+	return &mTaskManager;
+}
+ 

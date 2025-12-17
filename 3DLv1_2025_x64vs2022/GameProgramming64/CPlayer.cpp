@@ -1,5 +1,6 @@
 #include "CPlayer.h"
 #include "CApplication.h"
+#include "CTaskManager.h"
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f)
 #define VELOCITY CVector(0.0f,0.0f,0.1f)
 #define ROTATION_XV CVector(1.0f,0.0f,0.0f)
@@ -25,9 +26,12 @@ void CPlayer::Update() {
 		mRotation = mRotation + ROTATION_XV;
 	}
 	if (mInput.Key(VK_SPACE)) {
-		bullet.Set(0.1f, 1.5f);
-		bullet.Position(CVector(0.0f, 0.0f, 10.0f) * mMatrix);
-		bullet.Rotation(mRotation);
+		CBullet* bullet = new CBullet();
+		bullet->Set(0.1f, 1.5f);
+		bullet->Position(CVector(0.0f, 0.0f, 10.0f) * mMatrix);
+		bullet->Rotation(mRotation);
+		bullet->Update();
+		CApplication::TaskManager()->Add(bullet);
 	}
 	CTransform::Update();
 }
