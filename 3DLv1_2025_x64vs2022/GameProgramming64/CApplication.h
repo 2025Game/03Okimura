@@ -33,6 +33,7 @@ public:
 	void Update();
 	/*CTaskManager* TaskManager();*/
 private:
+	CModel mModelC5;
 	static CTaskManager mTaskManager;
 	CModel mBackGround;
 	CModel mModel;
