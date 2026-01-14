@@ -6,10 +6,12 @@
 
 class CBullet : public CCharacter3 {
 public:
+	CBullet();
 	void Set(float w, float d);
 	void Update();
 	void Render();
 private:
+	int mLife;
 	CTriangle mT;
 };
 

@@ -7,8 +7,13 @@ void CBullet::Set(float w, float d) {
 }
 
 void CBullet::Update() {
-	CTransform::Update();
-	mPosition = mPosition + CVector(0, 0, 1) * mMatrixRotate;
+	if (mLife-- > 0) {
+		CTransform::Update();
+		mPosition = mPosition + CVector(0.0f, 0.0f, 1.0f) * mMatrixRotate;;
+	}
+	else {
+		mEnabled = false;
+	}
 }
 
 void CBullet::Render() {
@@ -16,3 +21,6 @@ void CBullet::Render() {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	mT.Render(mMatrix);
 }
+CBullet::CBullet()
+	:mLife(50)
+{}

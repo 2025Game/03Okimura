@@ -31,3 +31,17 @@ void CTaskManager::Render()
 		task = task->mpNext;
 	}
 }
+void CTaskManager::Remove(CTask* task) {
+	task->mpPrev->mpNext = task->mpNext;
+	task->mpNext->mpPrev = task->mpPrev;
+}
+void CTaskManager::Delete() {
+	CTask* task = mHead.mpNext;
+	while (task->mpNext) {
+		CTask* del = task;
+		task = task->mpNext;
+		if (del->mEnabled == false) {
+			delete del;
+		}
+	}
+}

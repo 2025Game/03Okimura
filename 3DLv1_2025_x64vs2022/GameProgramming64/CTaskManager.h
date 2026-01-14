@@ -5,6 +5,8 @@
 
 class CTaskManager {
 public:
+	void Remove(CTask *task);
+	void Delete();
 	virtual~CTaskManager();
 	void Add(CTask* addTask);
 	void Update();

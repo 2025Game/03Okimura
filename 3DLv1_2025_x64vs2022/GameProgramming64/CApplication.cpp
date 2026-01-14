@@ -43,13 +43,14 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	mPlayer.Update();
+	//mPlayer.Update();
+	mTaskManager.Update();
 	CVector e, c, u;
 	e = mPlayer.Position() + CVector(0, 1, -3) * mPlayer.MatrixRotate();
 	c = mPlayer.Position();
 	u = CVector(0, 1, 0) * mPlayer.MatrixRotate();
 		gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
-	mPlayer.Render();
+	//mPlayer.Render();
 
 	CVector v0, v1, v2, n;
 	n.Set(0.0f, 1.0f, 0.0f);
