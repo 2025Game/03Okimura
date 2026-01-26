@@ -1,0 +1,24 @@
+#include "CCollider.h"
+
+CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
+	const CVector& position, float radius) {
+	mpParent = parent;
+	mpMatrix = matrix;
+	mPosition = position;
+	mRadius = radius;
+}
+
+CCharacter3* CCollider::Parent()
+{
+	return mpParent;
+}
+
+void CCollider::Render() {
+	glPushMatrix();
+	CVector pos = mPosition * *mpMatrix;
+	glMultMatrixf(CMatrix().Translate(pos.X(),pos.Y(), pos.Z()).M());
+	float c[] = { 1.0f,0.0f,0.0f,1.0f };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
+	glutWireSphere(mRadius, 16, 16);
+	glPopMatrix();
+}

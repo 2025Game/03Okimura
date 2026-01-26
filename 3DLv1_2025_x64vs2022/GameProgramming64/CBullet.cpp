@@ -20,7 +20,9 @@ void CBullet::Render() {
 	float c[] = { 1.0f,1.0f,0.0f,1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	mT.Render(mMatrix);
+	mCollider.Render();
 }
 CBullet::CBullet()
-	:mLife(50)
-{}
+	 :mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
+	, mLife(50)
+{};
