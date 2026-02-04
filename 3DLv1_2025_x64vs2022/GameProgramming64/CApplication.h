@@ -16,7 +16,7 @@
 class CApplication
 {
 public:
-	static CTaskManager* TaskManager();
+	//static CTaskManager* TaskManager();
 	static CTexture* Texture();
 	static CCharacterManager* CharacterManager();
 	enum class EState
@@ -34,7 +34,7 @@ public:
 	/*CTaskManager* TaskManager();*/
 private:
 	CModel mModelC5;
-	static CTaskManager mTaskManager;
+	//static CTaskManager mTaskManager;
 	CModel mBackGround;
 	CModel mModel;
 	CVector mEye;

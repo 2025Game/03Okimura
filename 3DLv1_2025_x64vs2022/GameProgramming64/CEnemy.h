@@ -11,12 +11,7 @@ public:
 	CEnemy(CModel* model, const CVector& posirion,
 		const CVector& rotation, const CVector& scale);
 	void Update();
-	void Render() {
-		CCharacter3::Render();
-		mCollider1.Render();
-		mCollider2.Render();
-		mCollider3.Render();
-	}
+	void Render();
 private:
 	CCollider mCollider1;
 	CCollider mCollider2;

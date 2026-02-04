@@ -5,6 +5,7 @@
 
 class CTaskManager {
 public:
+	static CTaskManager* Instance();
 	void Remove(CTask *task);
 	void Delete();
 	virtual~CTaskManager();
@@ -12,9 +13,12 @@ public:
 	void Update();
 
 	void Render();
-	CTaskManager();
+	
 protected:
+	CTaskManager();
 	CTask mHead;
 	CTask mTail;
+private:
+	static CTaskManager* mpInstance;
 };
 #endif

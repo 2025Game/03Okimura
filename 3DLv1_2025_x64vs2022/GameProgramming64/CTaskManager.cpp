@@ -1,4 +1,13 @@
 #include "CTaskManager.h"
+CTaskManager* CTaskManager::mpInstance = nullptr;
+CTaskManager* CTaskManager::Instance()
+{
+	if (mpInstance == nullptr)
+	{
+		mpInstance = new CTaskManager();
+	}
+	return mpInstance;
+}
 CTaskManager::CTaskManager()
 {
 	mHead.mpNext = &mTail;

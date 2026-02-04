@@ -6,6 +6,7 @@
 #include "CTriangle.h"
 #include "CMatrix.h"
 #include "CTransform.h"
+#include "CCollisionManager.h"
 
 #define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 #define SOUND_BGM "res\\mario.wav" //BGM‰¹ºƒtƒ@ƒCƒ‹
@@ -48,7 +49,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//mPlayer.Update();
-	mTaskManager.Update();
+	CTaskManager::Instance()->Update();
 	CVector e, c, u;
 	e = mPlayer.Position() + CVector(0, 1, -3) * mPlayer.MatrixRotate();
 	c = mPlayer.Position();
@@ -106,13 +107,15 @@ void CApplication::Update()
 	mBackGround.Render();
 	/*mPlayer.bullet.Update();
 	mPlayer.bullet.Render();*/
-	mTaskManager.Update();
-	mTaskManager.Render();
+	CTaskManager::Instance()->Update();
+	CTaskManager::Instance()->Render();
+	CCollisionManager::Instance()->Render();
 }
 
-CTaskManager CApplication::mTaskManager;
+/*CTaskManager CApplication::mTaskManager;
 CTaskManager* CApplication::TaskManager()
 {
 	return &mTaskManager;
 }
+*/
  

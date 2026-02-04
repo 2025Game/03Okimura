@@ -1,8 +1,9 @@
 #include "CCharacter3.h"
 #include "CApplication.h"
+#include <Instance.h>
 
 CCharacter3::~CCharacter3() {
-	CApplication::TaskManager()->Remove(this);
+	CTaskManager::Instance()->Remove(this);
 }
 void CCharacter3::Model(CModel* m)
 {
@@ -15,5 +16,5 @@ void CCharacter3::Render()
 CCharacter3::CCharacter3()
 	:mpModel(nullptr)
 {
-	CApplication::TaskManager()->Add(this);
+	CTaskManager::Instance()->Add(this);
 }

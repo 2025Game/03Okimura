@@ -3,8 +3,9 @@
 #define CCOLLIDER_H
 #include "CCharacter3.h"
 
-class CCollider :public CTransform {
+class CCollider :public CTransform,public CTask {
 public:
+	~CCollider();
 	CCollider(CCharacter3* parent, CMatrix* maatrix,
 		const CVector& position, float radius);
 	CCharacter3* Parent();

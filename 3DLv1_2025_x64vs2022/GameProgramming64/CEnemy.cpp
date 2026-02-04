@@ -13,7 +13,12 @@ CEnemy::CEnemy(CModel* model, const CVector& position,
 	mRotation = rotation;
 	mScale = scale;
 }
-
+/*void Render() {
+	CCharacter3::Render();
+	mCollider1.Render();
+	mCollider2.Render();
+	mCollider3.Render();
+}*/
 void CEnemy::Update() {
 	CTransform::Update();
 	mPosition = mPosition + VELOCITY * mMatrixRotate;
