@@ -1,6 +1,5 @@
 #include "CCharacter3.h"
 #include "CApplication.h"
-#include <Instance.h>
 
 CCharacter3::~CCharacter3() {
 	CTaskManager::Instance()->Remove(this);

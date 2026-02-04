@@ -41,13 +41,3 @@ void CTransform::Update() {
 	mMatrixTranslate.Translate(mPosition.X(), mPosition.Y(), mPosition.Z());
 	mMatrix = mMatrixScale * mMatrixRotate * mMatrixTranslate;
 }
-CTaskManager* CTaskManager::mpInstance = nullptr;
-
-CTaskManager* CTaskManager::Instance()
-{
-	if (mpInstance == nullptr)
-	{
-		mpInstance = new CTaskManager();
-	}
-	return mpInstance;
-}
