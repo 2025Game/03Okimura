@@ -2,9 +2,12 @@
 #ifndef CCOLLIDER_H
 #define CCOLLIDER_H
 #include "CCharacter3.h"
+class CCollisionManager;
 
 class CCollider :public CTransform,public CTask {
+	friend CCollisionManager;
 public:
+	static bool Collision(CCollider* m, CCollider* o);
 	~CCollider();
 	CCollider(CCharacter3* parent, CMatrix* maatrix,
 		const CVector& position, float radius);

@@ -1,6 +1,16 @@
 #include "CCollider.h"
 #include "CCollisionManager.h"
 
+bool CCollider::Collision(CCollider* m, CCollider* o) {
+	CVector mpos = m->mPosition * *m->mpMatrix;
+	CVector opos = o->mPosition * *o->mpMatrix;
+	mpos = mpos - opos;
+	if (m->mRadius + o->mRadius > mpos.Length()) {
+		return  true;
+	}
+	return false;
+}
+
 CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
 	const CVector& position, float radius) {
 	CCollisionManager::Instance()->Add(this);

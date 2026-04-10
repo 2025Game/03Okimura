@@ -8,6 +8,7 @@
 class CEnemy : public CCharacter3
 {
 public:
+	void Collision(CCollider* m, CCollider* o);
 	CEnemy(CModel* model, const CVector& posirion,
 		const CVector& rotation, const CVector& scale);
 	void Update();

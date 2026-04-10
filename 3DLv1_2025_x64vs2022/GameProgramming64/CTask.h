@@ -1,8 +1,10 @@
 #pragma once
 #ifndef CTASK_H
 #define CTASK_H
+class CCollisionManager;
 class CTaskManager;
 class CTask {
+	friend CCollisionManager;
 	friend CTaskManager;
 public:
 	CTask()

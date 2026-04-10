@@ -108,6 +108,7 @@ void CApplication::Update()
 	/*mPlayer.bullet.Update();
 	mPlayer.bullet.Render();*/
 	CTaskManager::Instance()->Update();
+	CCollisionManager::Instance()->Collision();
 	CTaskManager::Instance()->Render();
 	CCollisionManager::Instance()->Render();
 }

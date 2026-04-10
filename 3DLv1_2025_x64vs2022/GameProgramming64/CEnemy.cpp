@@ -1,6 +1,15 @@
 #include "CEnemy.h"
 #define VELOCITY CVector(0.0f,0.0f,0.09f)
 
+void CEnemy::Collision(CCollider* m, CCollider* o) {
+	//ƒRƒ‰ƒCƒ_‚Ìm‚Æo‚ªÕ“Ë‚µ‚Ä‚¢‚é‚©”»’è
+	if (CCollider::Collision(m, o)) {
+		//Õ“Ë‚µ‚Ä‚¢‚é‚Í–³Œø‚É‚·‚é
+		mEnabled = false;
+	}
+}
+
+
 CEnemy::CEnemy(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 	:mCollider1(this, &mMatrix, CVector(0.0f, 5.0f, 0.0f), 0.8f)

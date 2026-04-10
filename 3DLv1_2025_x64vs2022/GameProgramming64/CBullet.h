@@ -7,6 +7,7 @@
 
 class CBullet : public CCharacter3 {
 public:
+	void Collision(CCollider* m, CCollider* o);
 	CBullet();
 	void Set(float w, float d);
 	void Update();

@@ -7,6 +7,7 @@
 class CCollisionManager:public CTaskManager
 {
 public:
+	void Collision();
 	static CCollisionManager* Instance();
 private:
 	static CCollisionManager* mpInstance;

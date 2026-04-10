@@ -1,5 +1,11 @@
 #include "CBullet.h"
 
+void CBullet::Collision(CCollider* m, CCollider* o) {
+	if (CCollider::Collision(m, o)) {
+		mEnabled = false;
+	}
+}
+
 void CBullet::Set(float w, float d) {
 	mScale = CVector(1.0f, 1.0f, 1.0f);
 	mT.Normal(CVector(0.0f, 1.0f, 0.0f));
@@ -20,7 +26,6 @@ void CBullet::Render() {
 	float c[] = { 1.0f,1.0f,0.0f,1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	mT.Render(mMatrix);
-	//mCollider.Render();
 }
 CBullet::CBullet()
 	 :mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)

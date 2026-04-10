@@ -1,5 +1,6 @@
 #include "CCharacterManager.h"
 
+
 void CCharacterManager::Delete()
 {
 	//イテレータの生成
