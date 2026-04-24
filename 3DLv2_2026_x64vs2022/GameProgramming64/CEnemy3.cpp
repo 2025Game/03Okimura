@@ -1,6 +1,7 @@
 #include"CEnemy3.h"
 #include "CEffect.h"
 #include "CCollisionManager.h"
+#include "CPlayer.h"
 #define OBJ "res\\f16.obj"
 #define MTL "res\\f16.mtl"
 
@@ -25,6 +26,30 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 }
 void CEnemy3::Update()
 {
+	CPlayer* player = CPlayer::Instance();
+	if (player != nullptr)
+	{
+		CVector vp = player->Position() - mPosition;
+		float dx = vp.Dot(mMatrixRotate.VectorX());
+		float dy = vp.Dot(mMatrixRotate.VectorY());
+		float dz = vp.Dot(mMatrixRotate.VectorZ());
+		float distance = vp.Length();
+		if (-2.0f < dx && dx < 2.0f)
+		{
+			if (-2.0f < dy && dy < 2.0f)
+			{
+				if (dz > 0.0f && distance < 30.0f)
+				{
+					CBullet* bullet = new CBullet();
+					bullet->Set(0.1f, 1.5f);
+					bullet->Position(
+						CVector(0.0f, 0.0f, 10.0f) * mMatrix);
+					bullet->Rotation(mRotation);
+					bullet->Update();
+				}
+			}
+		}
+	}
 }
 void CEnemy3::Collision(CCollider* m, CCollider* o)
 {

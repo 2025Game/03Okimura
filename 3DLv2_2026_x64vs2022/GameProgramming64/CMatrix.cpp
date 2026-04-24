@@ -9,6 +9,7 @@
 
 #include "CVector.h"
 
+
 CMatrix CMatrix::Inverse() const
 {
 	CMatrix inverse, matrix = *this;

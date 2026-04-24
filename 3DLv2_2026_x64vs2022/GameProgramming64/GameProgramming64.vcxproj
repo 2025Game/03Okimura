@@ -48,6 +48,7 @@
     <ClCompile Include="CPlayer2.cpp" />
     <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
+    <ClCompile Include="CSceneBase.cpp" />
     <ClCompile Include="CShader.cpp" />
     <ClCompile Include="CShadowMap.cpp" />
     <ClCompile Include="CShadowShader.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="CPlayer2.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
+    <ClInclude Include="CSceneBase.h" />
     <ClInclude Include="CShader.h" />
     <ClInclude Include="CShadowMap.h" />
     <ClInclude Include="CShadowShader.h" />
@@ -105,6 +107,7 @@
     <ClInclude Include="CVector.h" />
     <ClInclude Include="CVertex.h" />
     <ClInclude Include="CXCharacter.h" />
+    <ClInclude Include="EScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
