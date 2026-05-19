@@ -4,11 +4,12 @@
 #include "CPlayer.h"
 #define OBJ "res\\f16.obj"
 #define MTL "res\\f16.mtl"
+#define HP 3
 
 CModel CEnemy3::sModel;
 CEnemy3::CEnemy3()
 	:CCharacter3(1)
-	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.4f)
+	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.4f),mHp(HP), mDeathTimer(0)
 {
 	if (sModel.Triangles().size() == 0)
 	{
@@ -26,6 +27,22 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 }
 void CEnemy3::Update()
 {
+	if (mHp <= 0)
+	{
+		//mHp--;
+		mDeathTimer++;
+		if (mDeathTimer % 15 == 0)
+		{
+			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+		}
+		mPosition = mPosition - CVector(0.0f, 0.03f, 0.0f);
+	CTransform::Update();
+	if (mDeathTimer > 60)
+	{
+		mEnabled = false;
+	}
+		return;
+	}
 	CPlayer* player = CPlayer::Instance();
 	if (player != nullptr)
 	{
@@ -58,6 +75,12 @@ void CEnemy3::Collision(CCollider* m, CCollider* o)
 	case CCollider::EType::ESPHERE:
 		if (CCollider::Collision(m, o)) {
 			new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+			mHp--;//ヒットポイントの減算
+			/*if (mHp <= 0)
+			{
+				mEnabled = false;
+			}*/
+			o->Parent()->SetEnabled(false);
 		}
 		break;
 	case CCollider::EType::ETRIANGLE:
@@ -75,3 +98,4 @@ void CEnemy3::Collision()
 	//衝突処理を実行
 	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
 }
+

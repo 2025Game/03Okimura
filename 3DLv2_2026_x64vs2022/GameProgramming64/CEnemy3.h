@@ -12,6 +12,8 @@ public:
 	void Collision(CCollider* m, CCollider* o);
 	void Collision();
 private:
+	int mDeathTimer;
+	int mHp;
 	static CModel sModel;
 	CCollider mCollider;
 };

@@ -13,6 +13,10 @@ class CCollider;
 */
 class CCharacter3 : public CTransform, public CTask {
 public:
+	void SetEnabled(bool enabled)
+	{
+		mEnabled = enabled;
+	}
 	//コンストラクタ
 	CCharacter3(int priority);
 
