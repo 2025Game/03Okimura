@@ -22,6 +22,12 @@
     <Filter Include="ソース ファイル\BaseSystem\Scene">
       <UniqueIdentifier>{ac438473-3e8d-426e-b576-e2b566f9c58d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{2f733b4e-7afe-4a4d-bac1-26850beb26a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene">
+      <UniqueIdentifier>{60a41882-64c8-4e85-ab2a-68bfef32eac8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CApplication.cpp">
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="CSceneBase.cpp">
       <Filter>ソース ファイル\BaseSystem\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleScene.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CApplication3.cpp">
+      <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +301,12 @@
     </ClInclude>
     <ClInclude Include="CSceneBase.h">
       <Filter>ソース ファイル\BaseSystem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleScene.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication3.h">
+      <Filter>ソース ファイル\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CApplication.cpp" />
+    <ClCompile Include="CApplication3.cpp" />
     <ClCompile Include="CBillBoard.cpp" />
     <ClCompile Include="CBlock.cpp" />
     <ClCompile Include="CBullet.cpp" />
@@ -61,9 +62,11 @@
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="CXCharacter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CTitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApplication.h" />
+    <ClInclude Include="CApplication3.h" />
     <ClInclude Include="CBillBoard.h" />
     <ClInclude Include="CBlock.h" />
     <ClInclude Include="CBullet.h" />
@@ -109,6 +112,7 @@
     <ClInclude Include="CXCharacter.h" />
     <ClInclude Include="EScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="CTitleScene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
