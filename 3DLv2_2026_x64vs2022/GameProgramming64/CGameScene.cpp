@@ -21,6 +21,7 @@ void CGameScene::Load()
 	CXCharacter* xchar = new CXCharacter();
 	xchar->Init(&mPlayer);
 }
+
 void CGameScene::Update()
 {
 	//ƒJƒƒ‰‚Ìİ’è
