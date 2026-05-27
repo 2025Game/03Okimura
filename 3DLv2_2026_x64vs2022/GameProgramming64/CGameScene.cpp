@@ -1,6 +1,7 @@
 #include "CGameScene.h"
 #include "CCharacter3.h"
 #include "CTaskManager.h"
+#include "CXCharacter.h"
 
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj", "res\\sky.mtl"
@@ -16,6 +17,9 @@ void CGameScene::Load()
 	CCharacter3* character = new CCharacter3();
 	//キャラクタのモデルの設定
 	character->Model(&mBackGround);
+	mPlayer.Load(MODEL_FILE);
+	CXCharacter* xchar = new CXCharacter();
+	xchar->Init(&mPlayer);
 }
 void CGameScene::Update()
 {
