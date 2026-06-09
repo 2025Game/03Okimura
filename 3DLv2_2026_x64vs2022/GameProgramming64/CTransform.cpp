@@ -1,5 +1,9 @@
 #include "CTransform.h"
 
+const CVector& CTransform::Rotation() const
+{
+	return mRotation;
+}
 const CVector& CTransform::Position() const
 {
 	return mPosition;

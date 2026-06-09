@@ -7,6 +7,8 @@
 */
 class CTransform {
 public:
+	// ‰ñ“]’l‚ğæ“¾
+	const CVector& Rotation() const;
 	//ˆÊ’u‚Ìæ“¾
 	const CVector& Position() const;
 	//ˆÊ’u‚Ìİ’è
