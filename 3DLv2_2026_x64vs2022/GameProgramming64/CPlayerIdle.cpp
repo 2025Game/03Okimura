@@ -26,4 +26,9 @@ void CPlayerIdle::Update()
 			CVector(0.0f, -ROTATIONSPEED, 0.0f);
 		mpParent->Rotation(r);
 	}
+	// Wキーが押されたら歩行状態へ
+	if (mInput.Key('W'))
+	{
+		mState = EState::EWALK;
+	}
 }
