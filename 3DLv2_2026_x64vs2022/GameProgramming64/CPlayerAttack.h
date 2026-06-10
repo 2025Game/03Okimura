@@ -1,14 +1,13 @@
 #pragma once
 
-#ifndef CPLAYERWALK_H
-#define CPLAYERWALK_H
+#ifndef CPLAYERATTACK_H
+#define CPLAYERATTACK_H
 
 #include "CState.h"
-#include "CInput.h"
 
 class CXCharacter;
 
-class CPlayerWalk : public CState
+class CPlayerAttack : public CState
 {
 public:
     // 状態開始
@@ -16,10 +15,6 @@ public:
 
     // 状態更新
     void Update();
-
-private:
-    // 入力
-    CInput mInput;
 };
 
 #endif

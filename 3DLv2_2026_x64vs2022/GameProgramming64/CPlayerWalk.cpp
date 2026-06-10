@@ -41,4 +41,8 @@ void CPlayerWalk::Update()
 
 		mpParent->Rotation(r);
 	}
+	if (mInput.Key('I'))
+	{
+		mState = EState::EATTACK;
+	}
 }
