@@ -7,6 +7,8 @@
 #include "CPlayerWalk.h"
 #include "CPlayerAttack.h"
 #include <memory>
+#include "CPlayerJump.h"
+#include <memory>
 class CXPlayer : public CXCharacter
 {
 public:
@@ -18,6 +20,7 @@ public:
 	CXPlayer();
 	void Update() override;
 private:
+	std::unique_ptr<CPlayerJump> mpJump;
 	std::unique_ptr<CPlayerAttack> mpAttack;
 	std::unique_ptr<CPlayerWalk> mpWalk; //歩く状態
 	std::unique_ptr<CPlayerIdle> mpIdle; //待機状態
