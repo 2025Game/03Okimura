@@ -25,5 +25,6 @@ CCube::CCube()
 }
 void CCube::Update()
 {
+	Rotation(Rotation() + CVector(0.0f, 1.0f, 0.0f));
 	CTransform::Update();
 }
