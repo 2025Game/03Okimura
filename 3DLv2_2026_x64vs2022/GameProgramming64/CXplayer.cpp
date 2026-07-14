@@ -67,8 +67,14 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
             if (CCollider::CollisionTriangleLine(
                 o, m, &adjust))
             {
-                //位置の更新(mPosition + adjust)
-                mPosition = mPosition + adjust;
+                mPosition = (CVector() * mMatrix + adjust);
+                if (o->Parent())
+                {
+                    mPosition = mPosition *
+                        o->Parent()->CombinedMatrix().Inverse();
+
+                }
+                mpParent = o->Parent();     
                 //行列の更新
                 CTransform::Update();
             }

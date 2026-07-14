@@ -1,5 +1,13 @@
 #include "CTransform.h"
 
+CTransform::CTransform()
+	: mpParent(nullptr)
+{
+}
+const CMatrix& CTransform::CombinedMatrix() const
+{
+	return mCombinedMatrix;
+}
 const CVector& CTransform::Rotation() const
 {
 	return mRotation;
@@ -56,4 +64,11 @@ void CTransform::Update() {
 	mMatrixTranslate.Translate(mPosition.X(), mPosition.Y(), mPosition.Z());
 	//‡¬s—ñ‚ÌÝ’è
 	mMatrix = mMatrixScale * mMatrixRotate * mMatrixTranslate;
+	mCombinedMatrix = mMatrixRotate * mMatrixTranslate;
+	if (mpParent) {
+		mCombinedMatrix = mCombinedMatrix *
+			mpParent->mCombinedMatrix;
+	}
+	mMatrix = mMatrixScale * mCombinedMatrix;
 }
+
