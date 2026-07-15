@@ -1,4 +1,8 @@
-﻿#include "CXPlayer.h"
+﻿#define _USE_MATH_DEFINES
+#include <math.h>
+// ラジアンを度数に変換するための定数
+const float RAD_TO_DEG = 180.0f / (float)M_PI;
+#include "CXPlayer.h"
 #include "CCollisionManager.h"
 #define GRAVITY 0.0625f // 重力
 CXPlayer::CXPlayer()
@@ -68,12 +72,18 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
                 o, m, &adjust))
             {
                 mPosition = (CVector() * mMatrix + adjust);
+                CVector forward = (CVector(0.0f, 0.0f, 1.0f) * mMatrix + adjust);
                 if (o->Parent())
                 {
                     mPosition = mPosition *
                         o->Parent()->CombinedMatrix().Inverse();
-
+                    forward = forward * o->Parent()->CombinedMatrix().Inverse();
                 }
+                forward = forward - mPosition;
+                // Y軸の回転角度を設定
+                mRotation.Y(atan2f(forward.X(), forward.Z()) * RAD_TO_DEG);
+               // float y = atan2(forward.X(), forward.Z()) * 180.0f / 3.14159265f;
+               // Rotation(CVector(Rotation().X(), y, Rotation().Z()));
                 mpParent = o->Parent();     
                 //行列の更新
                 CTransform::Update();
