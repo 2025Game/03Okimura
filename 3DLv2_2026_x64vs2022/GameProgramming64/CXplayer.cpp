@@ -90,7 +90,6 @@ void CXPlayer::Collision(CCollider* m, CCollider* o)
             }
         }
         break;
-
     }
 }
 
