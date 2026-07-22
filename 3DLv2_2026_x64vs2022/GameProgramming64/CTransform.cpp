@@ -4,6 +4,14 @@ CTransform::CTransform()
 	: mpParent(nullptr)
 {
 }
+void CTransform::Parent(CTransform* parent)
+{
+	mpParent = parent;
+}
+const CVector& CTransform::Scale() const
+{
+	return mScale;
+}
 const CMatrix& CTransform::CombinedMatrix() const
 {
 	return mCombinedMatrix;

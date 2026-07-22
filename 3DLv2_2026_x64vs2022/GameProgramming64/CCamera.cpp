@@ -1,6 +1,15 @@
 #include "CCamera.h"
 #include "glut.h"
 
+CCamera* CCamera::spInstance = nullptr;
+CCamera* CCamera::Instance()
+{
+	if (spInstance == nullptr)
+	{
+		spInstance = new CCamera();
+	}
+	return spInstance;
+}
 void CCamera::Start(double left, double right
 	, double bottom, double top)
 {
@@ -23,6 +32,36 @@ void CCamera::Start(double left, double right
 	gluOrtho2D(left, right, bottom, top);
 }
 
+void CCamera::Update()
+	{
+	// Jキーで左回転
+	if (GetAsyncKeyState('J'))
+	{
+		mRotation.Y(mRotation.Y() + 2.0f);
+	}
+
+	// Lキーで右回転
+	if (GetAsyncKeyState('L'))
+	{
+		mRotation.Y(mRotation.Y() - 2.0f);
+	}
+
+		CTransform::Update();
+
+		// カメラの位置、注視点、上方向を計算する
+		CVector mCenter = CVector() * mMatrix;
+		CVector mEye = CVector(1.0f, 1.0f, 1.0f) * mMatrix;
+		CVector mUp = CVector(0.0f, 1.0f, 0.0f);
+
+		// カメラの位置、注視点、上方向を設定する
+		gluLookAt(
+			mEye.X(), mEye.Y(), mEye.Z(),
+			mCenter.X(), mCenter.Y(), mCenter.Z(),
+			mUp.X(), mUp.Y(), mUp.Z()
+		);
+}
+
+
 void CCamera::End()
 {
 	//プロジェクション行列を戻す
@@ -36,3 +75,4 @@ void CCamera::End()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 }
+

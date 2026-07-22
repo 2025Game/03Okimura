@@ -7,7 +7,12 @@
 */
 class CTransform {
 public:
+	// e‚ğİ’è
+	void Parent(CTransform* parent);
 	CTransform();
+	//Šgk‚Ìæ“¾
+	const CVector& Scale() const;
+	// Šg‘å—¦‚Ìæ“¾
 	const CMatrix& CombinedMatrix() const;
 	// ‰ñ“]’l‚ğæ“¾
 	const CVector& Rotation() const;
