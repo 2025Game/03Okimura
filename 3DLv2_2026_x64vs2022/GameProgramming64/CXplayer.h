@@ -9,6 +9,8 @@
 #include <memory>
 #include "CPlayerJump.h"
 #include <memory>
+#include "CColliderCapsule.h"
+
 class CXPlayer : public CXCharacter
 {
 public:
@@ -28,6 +30,8 @@ private:
 	CState* mpState; //状態処理
 	// ラインコライダ
 	CColliderLine mColliderLine;
+	// カプセルコライダ
+	CColliderCapsule mColliderCapsule;
 };
 #endif
 

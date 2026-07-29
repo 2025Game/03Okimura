@@ -13,6 +13,12 @@ CXPlayer::CXPlayer()
         &mMatrix,
         CVector(0.0f, 3.5f, 0.0f),
         CVector(0.0f, 0.0f, 0.0f))
+    , mColliderCapsule(
+        this,
+        &mMatrix,
+        CVector(0.0f, 3.5f, 0.0f),
+        CVector(0.0f, 0.0f, 0.0f),
+        0.5f)
 {
     //待機状態の作成
     mpIdle = std::make_unique<CPlayerIdle>();
@@ -60,6 +66,7 @@ void CXPlayer::Update()
 	//親クラスの更新
 	CXCharacter::Update();
     CCamera::Instance()->Position(CVector(0.0f, 4.0f, 0.0f));
+    mColliderCapsule.Update();
 }
 
 void CXPlayer::Collision(CCollider* m, CCollider* o)
