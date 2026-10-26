@@ -8,9 +8,11 @@
 
 class CModelX {
 public:
+	char* GetToken();
 	CModelX();
 	void Load(const char* file);
 private:
+	bool IsDelimiter(char c);
 	char* mpPointer;
 	char mToken[1024];
 };
