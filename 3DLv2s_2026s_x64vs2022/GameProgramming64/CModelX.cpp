@@ -63,17 +63,72 @@ void CModelX::Load(const char* file) {
 	while (*mpPointer != '\0') {
 		GetToken();
 		if (strcmp(mToken, "Frame") == 0) {
-			printf("%s", mToken);
-			GetToken();
-			printf("%s\n", mToken);
-		}
-		if (strcmp(mToken, "AnimationSet") == 0) {
-			printf("%s ", mToken);
-			GetToken();
-			printf("%s\n", mToken);
+			new CModelXFrame(this);
 		}
 	}
 	SAFE_DELETE_ARRAY(buf);
 }
 
-//CModelXクラスのLoadメソッドにprintf関数を追加
+CModelXFrame::~CModelXFrame()
+{
+	//子フレームを全て解放する
+	std::vector<CModelXFrame*>::iterator itr;
+	for (itr = mChild.begin(); itr != mChild.end(); itr++) {
+		delete* itr;
+	}
+	//名前のエリアを解放する
+	SAFE_DELETE_ARRAY(mpName);
+}
+
+CModelX::~CModelX()
+{
+	if (mFrame.size() > 0)
+	{
+		delete mFrame[0];
+	}
+}
+
+void CModelX::SkipNode() {
+	while (*mpPointer != '\0') {
+		GetToken();
+		if (strchr(mToken, '{')) break;
+	}
+	int count = 1;
+	while (*mpPointer != '\0' && count > 0) {
+		GetToken();
+		if (strchr(mToken, '{')) count++;
+		else if (strchr(mToken, '}')) count--;
+	}
+}
+
+CModelXFrame::CModelXFrame(CModelX* model)
+	: mpName(nullptr)
+	, mIndex(0)
+{
+	mIndex = model->mFrame.size();
+	model->mFrame.push_back(this);
+	mTransformMatrix.Identity();
+	model->GetToken();
+	mpName = new char[strlen(model->mToken) + 1];
+	strcpy(mpName, model->mToken);
+	model->GetToken(); {
+		while (*model->mpPointer != '\0') {
+			model->GetToken();
+			if (strchr(model->mToken, '}')) break;
+			if (strcmp(model->mToken, "Frame") == 0) {
+				mChild.push_back(
+					new CModelXFrame(model));
+			}
+			else {
+				model->SkipNode();
+			}
+		}
+
+#ifdef _DEBUG
+		printf("%s\n", mpName);
+#endif
+	}
+}
+
+
+
