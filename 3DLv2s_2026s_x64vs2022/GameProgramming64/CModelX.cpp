@@ -75,4 +75,5 @@ void CModelX::Load(const char* file) {
 	}
 	SAFE_DELETE_ARRAY(buf);
 }
+
 //CModelXクラスのLoadメソッドにprintf関数を追加
